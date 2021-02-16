@@ -114,7 +114,10 @@ if "`smooth'" == "smooth" {
 		*keep `prefix'1 yhat upp low
 		rename `prefix'1 x
 		if "`save_data'" != "" {
+			preserve
+			keep x yhat se lowerci upperci
 			save `save_data', replace
+			restore
 		}
 	restore
 }
